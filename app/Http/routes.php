@@ -14,3 +14,11 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+
+$app->get('/hello/world', function () use ($app) {
+    return "Hello world!";
+});
+
+$app->get('/hello/{name}', ['middleware' => 'hello', function ($name) {
+    return view('hello', compact('name'));
+}]);
